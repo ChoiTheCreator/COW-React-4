@@ -3,7 +3,6 @@ import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/apiFunctions'; // 기존 axiosInstance 대신 apiFunctions 사용
 
-//주석 14:19pm
 function LoginForm() {
   const navigate = useNavigate();
 
@@ -28,8 +27,8 @@ function LoginForm() {
         localStorage.setItem('token', response.token); // 로그인 성공 시 토큰 저장
         navigate('/todos'); // Todos 페이지로 이동
       } catch (error) {
-        console.error('로그인 실패 시발:', error);
-        alert('로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.');
+        console.error('로그인 실패했습니다. 사유 :', error);
+        alert('로그인에 실패했습니다. 암호를 재확인해주세요');
       }
     }
   };

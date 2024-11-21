@@ -38,10 +38,12 @@ const SignUpModal = ({ closeModal, onSignupSuccess }) => {
     try {
       const response = await signUp(email, password);
       if (response && response.token) {
+        //토근 키 저장시 이걸 해야하나
         localStorage.setItem(`token_${email}`, response.token);
         alert('회원가입에 성공했습니다!');
         closeModal();
       } else {
+        //줄일만함( ifd에서 걸러짐)
         alert('토큰이 없습니다');
       }
     } catch (err) {

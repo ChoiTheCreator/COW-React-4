@@ -1,13 +1,19 @@
-import { axiosInstance } from "../utils/axiosInstance";
+import { axiosInstance } from '../utils/axiosInstance';
 // 로그인 요청
 export const login = async (email, password) => {
-  const response = await axiosInstance.post('/users/login', { email, password });
+  const response = await axiosInstance.post('/users/login', {
+    email,
+    password,
+  });
   return response.data;
 };
 
 // 회원가입 요청
 export const signUp = async (email, password) => {
-  const response = await axiosInstance.post('/users/create', { email, password });
+  const response = await axiosInstance.post('/users/create', {
+    email,
+    password,
+  });
   return response.data;
 };
 
@@ -31,19 +37,7 @@ export const createTodo = async (token, title, content) => {
   return response.data;
 };
 
-// Todo 업데이트
-export const updateTodo = async (token, id, title, content) => {
-  const response = await axiosInstance.put(
-    `/todos/${id}`,
-    { title, content },
-    {
-      headers: { Authorization: token },
-    }
-  );
-  return response.data;
-};
-
-// Todo 삭제
+// Todo 삭제 -> 진짜 삭제되었는지? 검토
 export const deleteTodo = async (token, id) => {
   await axiosInstance.delete(`/todos/${id}`, {
     headers: { Authorization: token },
